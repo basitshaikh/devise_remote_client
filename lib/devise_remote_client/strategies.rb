@@ -1,0 +1,1 @@
+require 'devise_remote_client/strategies/remote_authenticatable'
