@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature 'Signing in' do
   scenario 'Successful sign in via form' do
