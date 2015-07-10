@@ -5,13 +5,13 @@ require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
 require 'rspec/rails'
 # Load any of our adapters and extensions early in the process
-require 'rspec/rails/adapters'
-require 'rspec/rails/extensions'
+# require 'rspec/rails/adapters'
+# require 'rspec/rails/extensions'
 
 # Load the rspec-rails parts
-require 'rspec/rails/view_rendering'
-require 'rspec/rails/matchers'
-require 'rspec/rails/configuration'
+# require 'rspec/rails/view_rendering'
+# require 'rspec/rails/matchers'
+# require 'rspec/rails/configuration'
 
 require 'capybara/rspec'
 require 'factory_girl'
@@ -38,7 +38,10 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
-ActiveRecord::Migration.maintain_test_schema!
+# ActiveRecord::Migration.maintain_test_schema!
+
+# FactoryGirl settings
+FactoryGirl.find_definitions
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
