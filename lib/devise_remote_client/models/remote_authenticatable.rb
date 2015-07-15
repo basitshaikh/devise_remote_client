@@ -21,8 +21,10 @@ module Devise
         # Your logic to authenticate with the external webservice
         data = _authentication_method.call(authentication_hash)
 
-        self.id = data.id
-        self.authentication_token = data.authentication_token
+        if data
+          self.id = data.id
+          self.authentication_token = data.authentication_token
+        end
       end
 
       private

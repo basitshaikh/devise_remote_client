@@ -14,5 +14,5 @@ class User
   devise :remote_authenticatable
   # , :rememberable, :registerable
 
-  attr_accessor :id, :authentication_token, :email
+  attr_accessor :id, :authentication_token, :email, :password
 end
