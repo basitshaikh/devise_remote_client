@@ -4,15 +4,6 @@ require 'spec_helper'
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
 require 'rspec/rails'
-# Load any of our adapters and extensions early in the process
-# require 'rspec/rails/adapters'
-# require 'rspec/rails/extensions'
-
-# Load the rspec-rails parts
-# require 'rspec/rails/view_rendering'
-# require 'rspec/rails/matchers'
-# require 'rspec/rails/configuration'
-
 require 'capybara/rspec'
 require 'factory_girl'
 require 'devise'
