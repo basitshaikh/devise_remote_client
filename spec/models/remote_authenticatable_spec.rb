@@ -75,7 +75,6 @@ describe Devise::Models::RemoteAuthenticatable do
     context 'defined a remote_authentication_model_to_local_model_method' do
       Devise.remote_authenticatable.remote_authentication_model_to_local_model_method do |remote_model, local_model|
         remote_model.instance_variables.each do |instance_variable|
-          puts "#{instance_variable}"
           if local_model.respond_to?("#{instance_variable[1..-1]}=")
             local_model.instance_variable_set("#{instance_variable}",
                                               remote_model.instance_variable_get("#{instance_variable}"))

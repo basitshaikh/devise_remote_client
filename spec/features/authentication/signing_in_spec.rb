@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 feature 'Signing in' do
-
+  before(:each) do
+    Warden.test_reset!
+  end
   scenario 'Successful sign in via form' do
     visit '/'
     fill_in 'Email', with: "john.doe@gmail.com"

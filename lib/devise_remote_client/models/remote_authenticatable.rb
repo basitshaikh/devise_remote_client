@@ -6,14 +6,21 @@ module Devise
       mattr_accessor :_authentication_method
       @@_authentication_method = nil
 
+      mattr_accessor :_remote_authentication_model_to_local_model_method
+      @@_remote_authentication_model_to_local_model_method = nil
+
       def self.authentication_method(&block)
         self._authentication_method = block
+      end
+
+      def self.remote_authentication_model_to_local_model_method(&block)
+        self._remote_authentication_model_to_local_model_method = block
       end
 
       def remote_authentication(authentication_hash)
         unless _authentication_method
           raise NoMethodError,
-            'You must configure the authentication_method callback in your ' \
+                'You must configure the authentication_method callback in your ' \
             'devise.rb initializer with : ' \
             'config.remote_authenticable.authentication_method'
         end
@@ -22,8 +29,12 @@ module Devise
         data = _authentication_method.call(authentication_hash)
 
         if data
-          self.id = data.id
-          self.authentication_token = data.authentication_token
+          if _remote_authentication_model_to_local_model_method
+            _remote_authentication_model_to_local_model_method.call(data, self)
+          else
+            self.id = data.id
+            self.authentication_token = data.authentication_token
+          end
         end
       end
 
@@ -60,5 +71,5 @@ module Devise
 end
 
 Devise.add_module :remote_authenticatable, controller: :sessions,
-                                           model: 'devise_remote_client/models/remote_authenticable',
-                                           route: { session: :routes }
+                  model: 'devise_remote_client/models/remote_authenticable',
+                  route: { session: :routes }

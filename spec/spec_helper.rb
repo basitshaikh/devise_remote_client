@@ -4,7 +4,6 @@ require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
 require 'rspec/rails'
 
-require 'rspec/autorun'
 require 'capybara/rspec'
 require 'factory_girl'
 require 'devise'
@@ -19,7 +18,6 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 # If you are not using ActiveRecord, you can remove this line.
 # ActiveRecord::Migration.maintain_test_schema!
 # FactoryGirl settings
-FactoryGirl.find_definitions
 
 RSpec.configure do |config|
   # ## Mock Framework
